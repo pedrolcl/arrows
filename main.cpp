@@ -23,10 +23,16 @@ int main(int argc, char *argv[])
     scene.setBackgroundBrush(Qt::lightGray);
     scene.setSceneRect(-400, -400, 800, 800);
     scene.addItem(GenCircle(0, 0, 5));
-    scene.addItem(GenCircle(0, 0, 385));
+    scene.addItem(GenCircle(0, 0, 305));
     for (int angle = 0; angle < 360; angle += 15) {
-        scene.addItem(new ArrowItem(5, 0, 380, angle));
+        auto arrow = new ArrowItem(5, 0, 300, angle);
+        arrow->setTransformOriginPoint(0, 0);
+        scene.addItem(arrow);
     }
+    scene.addItem(new ArrowItem(QPointF{-350, -350}, QPointF{100, -350}));
+    scene.addItem(new ArrowItem(QPointF{-350, -350}, QPointF{-350, 100}));
+    scene.addItem(new ArrowItem(QPointF{350, 350}, QPointF{350, -100}));
+    scene.addItem(new ArrowItem(QPointF{350, 350}, QPointF{-100, 350}));
     view.resize(820, 820);
     view.show();
     return app.exec();
