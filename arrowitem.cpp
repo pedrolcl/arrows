@@ -4,6 +4,7 @@
  */
 
 #include "arrowitem.h"
+#include <cmath>
 
 ArrowItem::ArrowItem(qreal x, qreal y, QGraphicsItem *parent)
     : QGraphicsPathItem(parent)
@@ -13,6 +14,7 @@ ArrowItem::ArrowItem(qreal x, qreal y, QGraphicsItem *parent)
     , m_tip{x + m_length, y}
 {
     setFlag(QGraphicsItem::ItemIsSelectable);
+    setFlag(QGraphicsItem::ItemIsMovable);
     setTransformOriginPoint(m_origin);
 }
 
