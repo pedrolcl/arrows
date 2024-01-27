@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023, Pedro López-Cabanillas
+ * Copyright (c) 2023-2024, Pedro López-Cabanillas
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
@@ -8,6 +8,12 @@
 #include <QGraphicsView>
 
 #include "arrowitem.h"
+
+void addSceneArrow(QGraphicsScene &scene, ArrowItem *arrow)
+{
+    arrow->setToolTip(arrow->toString());
+    scene.addItem(arrow);
+}
 
 int main(int argc, char *argv[])
 {
@@ -26,13 +32,13 @@ int main(int argc, char *argv[])
     for (int angle = 0; angle < 360; angle += 15) {
         auto arrow = new ArrowItem(5, 0, 300, angle);
         arrow->setTransformOriginPoint(0, 0);
-        scene.addItem(arrow);
+        addSceneArrow(scene, arrow);
     }
     // adding 4 arrows
-    scene.addItem(new ArrowItem(QPointF{-350, -350}, QPointF{100, -350}));
-    scene.addItem(new ArrowItem(QPointF{-350, -350}, QPointF{-350, 100}));
-    scene.addItem(new ArrowItem(QPointF{350, 350}, QPointF{350, -100}));
-    scene.addItem(new ArrowItem(QPointF{350, 350}, QPointF{-100, 350}));
+    addSceneArrow(scene, new ArrowItem(QPointF{-350, -350}, QPointF{100, -350}));
+    addSceneArrow(scene, new ArrowItem(QPointF{-350, -350}, QPointF{-350, 100}));
+    addSceneArrow(scene, new ArrowItem(QPointF{350, 350}, QPointF{350, -100}));
+    addSceneArrow(scene, new ArrowItem(QPointF{350, 350}, QPointF{-100, 350}));
     view.resize(820, 820);
     view.show();
     return app.exec();

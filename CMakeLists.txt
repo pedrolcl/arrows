@@ -1,4 +1,4 @@
-# Copyright (c) 2023, Pedro López-Cabanillas
+# Copyright (c) 2023-2024, Pedro López-Cabanillas
 # SPDX-License-Identifier: BSD-3-Clause
 
 cmake_minimum_required(VERSION 3.14)
@@ -18,16 +18,25 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Widgets)
 
+add_library(ArrowsLib OBJECT
+    arrowitem.h
+    arrowitem.cpp
+)
+
 add_executable(ArrowsGalore
-  arrowitem.h
-  arrowitem.cpp
   arrowsgalore.cpp
+  $<TARGET_OBJECTS:ArrowsLib>
 )
 
 add_executable(TwoArrows
-  arrowitem.h
-  arrowitem.cpp
   twoarrows.cpp
+  $<TARGET_OBJECTS:ArrowsLib>
+)
+
+target_link_libraries(ArrowsLib
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Gui
+    Qt${QT_VERSION_MAJOR}::Widgets
 )
 
 target_link_libraries(ArrowsGalore
@@ -43,7 +52,7 @@ target_link_libraries(TwoArrows
 )
 
 include(GNUInstallDirs)
-install(TARGETS ArrowsGalore
+install(TARGETS ArrowsGalore TwoArrows
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )

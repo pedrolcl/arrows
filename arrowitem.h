@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023, Pedro López-Cabanillas
+ * Copyright (c) 2023-2024, Pedro López-Cabanillas
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
@@ -52,7 +52,7 @@ public:
      * @param angle The arrow orientation angle in degrees
      * @param parent Optional QGraphicsItem parent
      * 
-     * This constructor automatically updates the paiter path.
+     * This constructor automatically updates the painter path.
      */
     ArrowItem(qreal x, qreal y, qreal length, qreal angle, QGraphicsItem *parent = nullptr);
 
@@ -63,7 +63,7 @@ public:
      * @param angle The arrow orientation angle in degrees
      * @param parent Optional QGraphicsItem parent
      * 
-     * This constructor automatically updates the paiter path.
+     * This constructor automatically updates the painter path.
      */
     ArrowItem(QPointF origin, qreal length, qreal angle, QGraphicsItem *parent = nullptr);
 
@@ -75,7 +75,7 @@ public:
      * 
      * This constructor initializes the length of the arrow as the distance from 
      * the origin point to the tip point, as the orientation angle in degrees.
-     * This constructor automatically updates the paiter path.
+     * This constructor automatically updates the painter path.
      */
     ArrowItem(QPointF origin, QPointF tip, QGraphicsItem *parent = nullptr);
 
@@ -123,6 +123,12 @@ public:
      * You need to call updatePath() after calling this method
      */
     void setAngle(qreal newAngle);
+
+    /**
+     * @brief toString returns a QString representation of the arrow
+     * @return QString representation of the arrow
+     */
+    QString toString() const;
 
 private:
     QPointF m_origin;

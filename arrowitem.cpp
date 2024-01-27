@@ -1,9 +1,10 @@
 /**
- * Copyright (c) 2023, Pedro López-Cabanillas
+ * Copyright (c) 2023-2024, Pedro López-Cabanillas
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
 #include "arrowitem.h"
+#include <QTextStream>
 #include <cmath>
 
 ArrowItem::ArrowItem(qreal x, qreal y, QGraphicsItem *parent)
@@ -94,4 +95,13 @@ qreal ArrowItem::angle() const
 void ArrowItem::setAngle(qreal newAngle)
 {
     m_angle = newAngle;
+}
+
+QString ArrowItem::toString() const
+{
+    QString buffer;
+    QTextStream stream(&buffer);
+    stream << "origin x: " << origin().rx() << " y: " << origin().ry() << "\nlength: " << length()
+           << "\norientation: " << angle();
+    return buffer;
 }

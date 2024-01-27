@@ -2,7 +2,7 @@
 
 Arrow QGraphicsItem
 
-The ArrowItem class is an arrow shaped QGraphicsItem. This QGraphicsItem can be added to a QGraphicsScene.  
+The ArrowItem class is an arrow shaped QGraphicsItem. This QGraphicsItem can be added to a QGraphicsScene.
 See the [Qt Graphics View Framework](https://doc.qt.io/qt-6/graphicsview.html) and [QGraphicsPathItem](https://doc.qt.io/qt-6/qgraphicspathitem.html).
 
 There are two programs included in this project showing how to use the ArrowItem class.
@@ -45,6 +45,6 @@ Arrow2. origin: QPointF(-354,-354) length: 500.632 orientation: 45
 
 ## License
 
-Copyright (c) 2023, Pedro López-Cabanillas  
+Copyright (c) 2023-2024, Pedro López-Cabanillas
 SPDX-License-Identifier: BSD-3-Clause  
 See: [LICENSE](LICENSE)  
